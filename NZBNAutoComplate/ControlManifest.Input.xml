@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="GC" constructor="NZBNAutoComplate" version="0.0.4" display-name-key="NZBNAutoComplate" description-key="NZBNAutoComplate description" control-type="standard">
+    <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
+    <property name="value" display-name-key="Auto Complete Field?" description-key="Select the field that you want this auto complete fuction to be bound too." of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="nzbnToken" display-name-key="NZBN Token" description-key="NZBN Token" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="nzbnNumber" display-name-key="NZBN Number" description-key="NZBN Number" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="companyName" display-name-key="Company Name" description-key="Company Name" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="tradingAs" display-name-key="Trading As" description-key="Trading As" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="statusCode" display-name-key="Status Code" description-key="Status Code" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="statusReason" display-name-key="Status Reason" description-key="Status Reason" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="registrationDate" display-name-key="Registration Date" description-key="Registration Date" of-type="DateAndTime.DateOnly" usage="bound" required="true" />
+    <property name="bicCode" display-name-key="BIC Code" description-key="BIC Code" of-type="SingleLine.Text" usage="bound" required="true" />
+    <!-- 
+      Property node's of-type attribute can be of-type-group attribute. 
+      Example:
+      <type-group name="numbers">
+        <type>Whole.None</type>
+        <type>Currency</type>
+        <type>FP</type>
+        <type>Decimal</type>
+      </type-group>
+      <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type-group="numbers" usage="bound" required="true" />
+    -->
+    <resources>
+      <code path="index.ts" order="1"/>
+      <css path="css/style.css" order="1" />
+    </resources>
+    <!-- UNCOMMENT TO ENABLE THE SPECIFIED API
+    <feature-usage>
+      <uses-feature name="Device.captureAudio" required="true" />
+      <uses-feature name="Device.captureImage" required="true" />
+      <uses-feature name="Device.captureVideo" required="true" />
+      <uses-feature name="Device.getBarcodeValue" required="true" />
+      <uses-feature name="Device.getCurrentPosition" required="true" />
+      <uses-feature name="Device.pickFile" required="true" />
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+    -->
+  </control>
+</manifest>
