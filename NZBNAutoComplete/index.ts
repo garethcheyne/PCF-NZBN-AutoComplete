@@ -21,7 +21,7 @@ export class NZBNAutoComplate implements ComponentFramework.StandardControl<IInp
 	private _statusCode: string;
 	private _statusReason: string;
 	private _registrationDate: Date;
-	private _bicCode: Date;
+	private _bicCode: string;
 
 	private id: string;
 	
@@ -233,7 +233,8 @@ export class NZBNAutoComplate implements ComponentFramework.StandardControl<IInp
 			tradingAs: this._tradingAs,
 			statusCode: this._statusCode,
 			statusReason: this._statusReason,
-			registrationDate: this._registrationDate
+			registrationDate: this._registrationDate,
+			bicCode: this._bicCode
 		};
 	}
 
