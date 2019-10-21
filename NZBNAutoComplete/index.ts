@@ -22,10 +22,7 @@ export class NZBNAutoComplate implements ComponentFramework.StandardControl<IInp
 	private _statusReason: string;
 	private _registrationDate: Date;
 	private _bicCode: string;
-
-	private id: string;
-	
-	
+	private id: string;	
 
 	constructor()
 	{
@@ -44,7 +41,6 @@ export class NZBNAutoComplate implements ComponentFramework.StandardControl<IInp
 	{
 		this.localNotifyOutputChanged = notifyOutputChanged;
 		this.context = context;
-
 		this._nzbnToken = context.parameters.nzbnToken.raw;
 
 		// @ts-ignore
@@ -100,7 +96,6 @@ export class NZBNAutoComplate implements ComponentFramework.StandardControl<IInp
 	public getSuggestions(evt: Event) {
 
 		// Connect to an API and get the suggesstion as user key presses and update dropdown.
-		console.log("getSuggestions")
 		let key = "NZBN"
 		let input = (this.inputElement.value as any) as string;
 		if (input.indexOf(key) == -1 && input.length > 0)
@@ -126,7 +121,6 @@ export class NZBNAutoComplate implements ComponentFramework.StandardControl<IInp
 				// The whole response has been received. Print out the result.
 				resp.on('end', () => {
 					var response = JSON.parse(data);
-					console.log();
 					console.log(response);
 					var optionsHTML = "";
 					var optionsHTMLArray = new Array();
@@ -153,13 +147,11 @@ export class NZBNAutoComplate implements ComponentFramework.StandardControl<IInp
 
 	getDetails(value: string){
 		let _output = {}
-
-		console.log("updateView");
-		console.log("setSelected");
 		// set the key to lok for in the input that was placed above.
 		let key = "NZBN"
 		if (value.indexOf(key) > -1){
 			let _nzbn = value.substring(value.indexOf(key) + 6, value.length);
+
 			var query = "entities/" + _nzbn;
 			var options = {
 				host: 'api.business.govt.nz/services/v4/nzbn/',
@@ -183,15 +175,14 @@ export class NZBNAutoComplate implements ComponentFramework.StandardControl<IInp
 				// The whole response has been received. Print out the result.
 				resp.on('end', () => {
 					var response = JSON.parse(data);
-					console.log("setAddress API response")
 					console.log(response)
 					this._nzbnNumber = response.nzbn
 					this._companyName = this.titleCase(response.entityName)
-					this._tradingAs = (( response.tradingNames.length > 0 ) ?  this.titleCase(response.tradingNames[0].name) : this.titleCase(response.entityName))
+					this._tradingAs = (( response.tradingNames !== null ) ?  this.titleCase(response.tradingNames[0].name) : this.titleCase(response.entityName))
 					this._statusCode = response.entityStatusCode
 					this._statusReason = response.entityStatusDescription
 					this._registrationDate = response.registrationDate
-					this._bicCode = (( response.industryClassifications.length > 0 ) ? response.industryClassifications[0].classificationCode : null)
+					this._bicCode = (( response.industryClassifications !== null ) ? response.industryClassifications[0].classificationCode : null)
 					this.localNotifyOutputChanged()
 					
 

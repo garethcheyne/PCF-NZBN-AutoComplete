@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="GC" constructor="NZBNAutoComplate" version="0.0.5" display-name-key="NZBNAutoComplate" description-key="NZBNAutoComplate description" control-type="standard">
+  <control namespace="GC" constructor="NZBNAutoComplate" version="0.0.6" display-name-key="NZBNAutoComplate" description-key="NZBNAutoComplate description" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="value" display-name-key="Auto Complete Field?" description-key="Select the field that you want this auto complete fuction to be bound too." of-type="SingleLine.Text" usage="bound" required="true" />
     <property name="nzbnToken" display-name-key="NZBN Token" description-key="NZBN Token" of-type="SingleLine.Text" usage="input" required="true" />
