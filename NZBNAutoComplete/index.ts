@@ -178,11 +178,11 @@ export class NZBNAutoComplate implements ComponentFramework.StandardControl<IInp
 					console.log(response)
 					this._nzbnNumber = response.nzbn
 					this._companyName = this.titleCase(response.entityName)
-					this._tradingAs = (( response.tradingNames !== null ) ?  this.titleCase(response.tradingNames[0].name) : this.titleCase(response.entityName))
+					this._tradingAs = (( !Array.isArray(response.tradingNames) || !response.tradingNames.length ) ?  this.titleCase(response.entityName) : this.titleCase(response.tradingNames[0].name))
 					this._statusCode = response.entityStatusCode
 					this._statusReason = response.entityStatusDescription
 					this._registrationDate = response.registrationDate
-					this._bicCode = (( response.industryClassifications !== null ) ? response.industryClassifications[0].classificationCode : null)
+					this._bicCode = (( !Array.isArray(response.industryClassifications) || !response.industryClassifications.length ) ? null : response.industryClassifications[0].classificationCode)
 					this.localNotifyOutputChanged()
 					
 
