@@ -60,7 +60,6 @@ export class NZBNAutoComplate implements ComponentFramework.StandardControl<IInp
 		// Get initial values from field.
 		// @ts-ignore
 		this.inputElement.value = this.context.parameters.value.formatted
-		//this.inputElement.value = Xrm.Page.getAttribute(context.parameters.value.attributes.LogicalName).getValue();
 
 		// Add an eventlistner the element and bind it to a  function.
 		this.inputElement.addEventListener("input", this.getSuggestions.bind(this));
@@ -146,7 +145,6 @@ export class NZBNAutoComplate implements ComponentFramework.StandardControl<IInp
 	}
 
 	getDetails(value: string){
-		let _output = {}
 		// set the key to lok for in the input that was placed above.
 		let key = "NZBN"
 		if (value.indexOf(key) > -1){
@@ -183,10 +181,7 @@ export class NZBNAutoComplate implements ComponentFramework.StandardControl<IInp
 					this._statusReason = response.entityStatusDescription
 					this._registrationDate = response.registrationDate
 					this._bicCode = (( !Array.isArray(response.industryClassifications) || !response.industryClassifications.length ) ? null : response.industryClassifications[0].classificationCode)
-					this.localNotifyOutputChanged()
-					
-
-	
+					this.localNotifyOutputChanged();
 
 				});
 
