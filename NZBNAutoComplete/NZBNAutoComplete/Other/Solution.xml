@@ -5,7 +5,7 @@
     <UniqueName>NZBNAutoComplete</UniqueName>
     <LocalizedNames>
       <!-- Localized Solution Name in language code -->
-      <LocalizedName description="NZBNAutoComplete" languagecode="1033" />
+      <LocalizedName description="NZBN Auto Complete" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
     <Version>1.0</Version>
