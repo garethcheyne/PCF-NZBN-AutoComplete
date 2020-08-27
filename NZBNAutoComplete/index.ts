@@ -100,7 +100,7 @@ export class NZBNAutoComplate implements ComponentFramework.StandardControl<IInp
 		if (input.indexOf(key) == -1 && input.length > 0)
 		{
 			this.datalistElement.innerHTML = "";
-			let query = "entities?search-term=" + input + "&page-size=20";
+			let query = "entities?search-term=" + encodeURIComponent(input) + "&page-size=20";
 			let options = {
 				host: 'api.business.govt.nz/services/v4/nzbn/',
 				path: query,
