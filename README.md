@@ -21,7 +21,8 @@ Usage:
 It is one this to get this data in the first place, but you need to do something with it.  Im my situation i have a MS Flow that is scheduled to run each night, and check the companies status using the NZBN. If the companys status changes from anything other than 50, then we flag the account so that the users in dynamics know not to trade on credit with them.
 
 
-Screenshot.
+Screenshot:
+
 ![Screenshot](screenshot.png)
 
 
