@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest>
-  <control namespace="GC" constructor="NZBNAutoComplate" version="0.0.11" display-name-key="NZBNAutoComplate" description-key="NZBNAutoComplate description" control-type="standard">
+  <control namespace="GC" constructor="NZBNAutoComplate" version="0.0.15" display-name-key="NZBNAutoComplate" description-key="NZBNAutoComplate description" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="value" display-name-key="Auto Complete Field?" description-key="Select the field that you want this auto complete fuction to be bound too." of-type="SingleLine.Text" usage="bound" required="true" />
     <property name="nzbnToken" display-name-key="NZBN Token" description-key="NZBN Token" of-type="SingleLine.Text" usage="input" required="true" />
@@ -24,8 +24,9 @@
     -->
     <resources>
       <code path="index.ts" order="1" />
-      <css path="css/style.css" order="1" />
-      <!-- <css path="css/fabric.css" order="1" /> -->
+      <!-- <code path="js/fabric.min.js.ts" order="2" /> -->
+      <css path="css/fabric.min.css" order="1" />
+      <css path="css/fabric.components.min.css" order="1" />
     </resources>
     <!-- UNCOMMENT TO ENABLE THE SPECIFIED API
     <feature-usage>
@@ -40,4 +41,4 @@
     </feature-usage>
     -->
   </control>
-</manifest>
+</manifest>1

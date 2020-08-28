@@ -1,10 +1,15 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 
+
+
 export class NZBNAutoComplate implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
     private localNotifyOutputChanged: () => void;
     private context: ComponentFramework.Context<IInputs>;
     private container: HTMLDivElement;
+    private label: HTMLLabelElement;
+    private buttonContainer: HTMLDivElement;
+    private button: HTMLButtonElement;
     private refreshData: EventListenerOrEventListenerObject;
 
     // input element that is used to create the autocomplete
@@ -47,12 +52,30 @@ export class NZBNAutoComplate implements ComponentFramework.StandardControl<IInp
         // Assinging enviroment vairable.
         this.context = context;
         this.container = document.createElement("div");
+        this.container.className = "ms-SearchBox";
+        this.container.setAttribute("style", "width:100%");
+
+        this.label = document.createElement("label");
+        this.label.className = "ms-SearchBox-label";
+        this.label.innerHTML = "<i class='ms-SearchBox-icon ms-Icon ms-Icon--Search'></i>"
+
+        this.buttonContainer = document.createElement("div");
+        this.buttonContainer.className = "ms-CommandButton ms-SearchBox-clear ms-CommandButton--noLabel"
+        this.buttonContainer.setAttribute("style", "display:block");
+
+        this.button = document.createElement("button");
+        this.button.className = "ms-CommandButton-button"
+        this.button.innerHTML = '<span class="ms-CommandButton-icon"><i class="ms-Icon ms-Icon--Clear"></i></span><span class="ms-CommandButton-label"></span> '
+
+        this.button.addEventListener("click", this.clearFields.bind(this))
+
         this.inputElement = document.createElement("input");
         this.inputElement.name = "autocomplete_" + this.id
-        this.inputElement.placeholder = "---";
+        this.inputElement.placeholder = "Search Companies Database...";
         this.inputElement.autocomplete = "off";
-        this.inputElement.className = "pcfCustomField"
+        this.inputElement.className = "ms-SearchBox-field"
         this.inputElement.setAttribute("list", "list_" + this.id);
+        this.inputElement.setAttribute("style", "width:100%");
 
 
         // Get initial values from field.
@@ -73,6 +96,10 @@ export class NZBNAutoComplate implements ComponentFramework.StandardControl<IInp
 
         // Appending the HTML elements to the control's HTML container element.
         // Add input element
+
+        this.buttonContainer.appendChild(this.button);
+        this.container.appendChild(this.label);
+        this.container.appendChild(this.buttonContainer);
         this.container.appendChild(this.inputElement);
 
         //Add datalist element
@@ -87,6 +114,20 @@ export class NZBNAutoComplate implements ComponentFramework.StandardControl<IInp
 	 */
     public updateView(context: ComponentFramework.Context<IInputs>): void {
         ((this._companyName != undefined) ? this.inputElement.value = this._companyName : null)
+    }
+
+    public clearFields(evt: Event) {
+        console.log("Clear Fields")
+
+        this._companyName = ""
+        this._nzbnNumber = ""
+        this._companyName = ""
+        this._tradingAs = ""
+        this._statusCode = ""
+        this._statusReason = ""
+        // this._registrationDate = None
+        this._bicCode = ""
+        this.localNotifyOutputChanged();
     }
 
     public getSuggestions(evt: Event) {
