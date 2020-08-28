@@ -22,6 +22,6 @@ It is one this to get this data in the first place, but you need to do something
 
 
 Screenshot.
-![Screenshot]("screenshot.png")
+![Screenshot](screenshot.png)
 
 
